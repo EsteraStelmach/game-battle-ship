@@ -10,7 +10,6 @@ public class Game {
     private List<Board> computerHitList= new ArrayList<Board>();
     private List<Ship> allBoardShips= new ArrayList<Ship>();
     private List<Board> allChosenBoard= new ArrayList<>();
-    int e=0;
 
 
     public Game(List<Board> boardList) {

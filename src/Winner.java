@@ -3,7 +3,11 @@ import java.util.List;
 
 public class Winner {
 
-    private List<Ship> winnerShips= new ArrayList<Ship>();
+    private List<Ship> winnerShips= new ArrayList<Ship>(10);
+
+    public List<Ship> getWinnerShips() {
+        return winnerShips;
+    }
 
     protected void addSunkSipToWinnerShips(Ship ship){
         winnerShips.add(ship);
