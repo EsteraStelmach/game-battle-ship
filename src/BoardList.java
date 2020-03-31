@@ -3,13 +3,13 @@ import java.util.List;
 
 public class BoardList {
 
-    private List<Board> allBoard;
+    private List<Board> allBoard; //List of all Board in one boardGame(100) / lista 100 board na jednej planszy gry
 
     public BoardList() {
         allBoard = makeAllBoard();
     }
 
-    private List<Board> makeAllBoard() {
+    private List<Board> makeAllBoard() { //makes all boards / tworzy wszytskie boards
 
         allBoard = new ArrayList<>();
 

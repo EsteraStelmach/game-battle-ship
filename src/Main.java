@@ -102,14 +102,14 @@ public class Main {
                }
            }else if(Pattern.matches(hitPattern,playerAnswer)){// gracza board //kiedy odpowiedz gracza to hit
                System.out.println("Yes! I'm a good player.");
-               playerBoard.setComputerHitList(computerAnswerField);
+               playerBoard.addBoardToComputerHitList(computerAnswerField);
                computerAnswerField=playerBoard.nextComputerMoveAnswerHit(playerBoard.getComputerHitList().get(playerBoard.getComputerHitList().size()-1));
                playerBoard.addChosenBoard(computerAnswerField);
                System.out.println("I choose: " + computer.digitToLetter(computerAnswerField.getColumn()) + " " + computerAnswerField.getVerse());
                System.out.println("Please, answer only: 'Hit!', 'Hit and Sunk' or 'Empty'");
 
            }else if(Pattern.matches(sunkPattern,playerAnswer)){
-               playerBoard.setComputerHitList(computerAnswerField);
+               playerBoard.addBoardToComputerHitList(computerAnswerField);
                System.out.println("Yeah! I'm the Best!");
                computer.addSunkSipToWinnerShips(playerBoard.getPlaceInTheList(computerAnswerField));
                playerBoard.setFalseShipArea();

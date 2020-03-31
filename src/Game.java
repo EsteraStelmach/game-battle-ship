@@ -4,12 +4,12 @@ import java.util.stream.Collectors;
 
 public class Game {
 
-    private final List<Board> boardList;
+    private final List<Board> boardList; //list for all Boards (100) which are in boardGame //lista 100 board ktore ukladaja sie na planszy gry
     private Board board;
     private Ship findShipInTheList;
-    private List<Board> computerHitList= new ArrayList<Board>();
-    private List<Ship> allBoardShips= new ArrayList<Ship>();
-    private List<Board> allChosenBoard= new ArrayList<>();
+    private List<Board> computerHitList= new ArrayList<>();//list of boards which computer hit the player's ship/ lista board w ktorej computer uderzyl w statek przeciwnika
+    private List<Ship> allBoardShips= new ArrayList<>();// all ships on board game/ wszystkie statki na planszy
+    private List<Board> allChosenBoard= new ArrayList<>(); //all chosen boards from computer/ wszytskie wybrane board przez computer
 
 
     public Game(List<Board> boardList) {
@@ -24,7 +24,7 @@ public class Game {
         return computerHitList;
     }
 
-    public void setComputerHitList(Board computerAnswer) {
+    public void addBoardToComputerHitList(Board computerAnswer) {
         this.computerHitList.add(computerAnswer);
     }
 
@@ -49,7 +49,7 @@ public class Game {
         return findShipInTheList;
     }
 
-    public void setShip(Ship ship) {  //ustawianie statku
+    public void setShip(Ship ship) {  //setting ship on boardList/ ustawianie statku na boardList
 
         board = randomCel();
         if(ship.getShipLength()==1){
@@ -68,13 +68,13 @@ public class Game {
         }
     }
 
-    protected Board randomCel(){
+    protected Board randomCel(){ // random place for Board / losowe miejsce dla board
 
-        int randomColumn=(int)(Math.random()*10+1);
-        int randomVerse= (int)(Math.random()*10+1);
+        int randomColumn =(int)(Math.random()*10+1);
+        int randomVerse = (int)(Math.random()*10+1);
         for (Board helpBoard: boardList) {
             if(helpBoard.equals(new Board(randomVerse,randomColumn,true))){
-                if(!allChosenBoard.contains(helpBoard)) {
+                if(helpBoard.isEmpty()) { //if on this board is already a ship(empty==false) / jesli na tym board jest juz statek empty==false)
                     setBoard(helpBoard);
                     break;
                 }else{
@@ -212,7 +212,7 @@ public class Game {
     }
     protected Board randomCelForComputerAnswer(){
         Board board=randomCel();
-        if(!board.isEmpty()){
+        if((!board.isEmpty()) || (!allChosenBoard.contains(board))){
            board= randomCelForComputerAnswer();
         }
         return board;

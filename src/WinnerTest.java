@@ -13,6 +13,7 @@ public class WinnerTest {
         assertTrue(winner.getWinnerShips().size()==0);
     }
 
+
     @Test
     public void shouldAddSunkSipToWinnerShips() { //check if method addSunkToWinnerShip works correctly/ sprawdza czy metoda addSunkToWinnerShip działa poprawnie
         winner.addSunkSipToWinnerShips(ship1);
@@ -27,6 +28,18 @@ public class WinnerTest {
     }
 
     @Test
-    public void isTheWinner() {
+    public void shouldSayIsNotTheWinner() {//check if method isTheWinner works correctly/ sprawdza czy metoda isTheWinner dziala poprawnie
+        for(int i=0;i<7;i++){
+            winner.addSunkSipToWinnerShips(ship1);
+        }
+        assertFalse(winner.isTheWinner());
+    }
+
+    @Test
+    public void shouldSayIsTheWinner() {//check if method isTheWinner works correctly/ sprawdza czy metoda isTheWinner dziala poprawnie
+        for(int i=0;i<10;i++){
+            winner.addSunkSipToWinnerShips(ship1);
+        }
+        assertTrue(winner.isTheWinner());
     }
 }
